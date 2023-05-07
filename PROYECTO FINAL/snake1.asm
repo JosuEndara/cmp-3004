@@ -22,7 +22,7 @@ yConversion:	.word	4		# CONVERSOR PARA DISPLAY EN BITMAP
 main:
 	la 	$t0, Bufferbitmap	# SE CARGA LA DIRECCION INICIAL DEL BITMAP
 	li 	$t1, 0x20000		# DECLARA UN ESPACIO SUFICIENTE PARA 512*256 pixels
-	li 	$t2, 0x00FFF00	# CARGA PIXEL COLOR AMARILLO
+	li 	$t2, 0x00FFF00	# CARGA PIXEL COLOR VERDE
 loop1:				#INGRESO LOOP
 	sw   	$t2, 0($t0)	#ALMACENA VALOR DE MEMORIA DE $t0 EN $t2, direccion inicial bitmap,pinta
 	addi 	$t0, $t0, 4 	# AVANZA SIGUIENTE POSICION DEL PIXEL EN DISPLAY
@@ -211,7 +211,7 @@ exitVelocitySet:
 	
 headNotApple:
 
-	li	$t2, 0x00FFF00		# CARGA COLOR AMARILLO
+	li	$t2, 0x00FFF00		# CARGA COLOR VERDE
 	beq	$t2, $t4, validHeadSquare	
 	
 	addi 	$v0, $zero, 10	# GAME OVER
@@ -222,7 +222,7 @@ validHeadSquare:
 	lw	$t0, tail		# t0 = tail
 	la 	$t1, Bufferbitmap	# CARGA DIRECCION DE BITMAP
 	add	$t2, $t0, $t1		# SE OBTIENE POSICION DE LA COLA EN BITMAP
-	li 	$t3, 0x00FFF00	        # CARGA COLOR AMARILLO
+	li 	$t3, 0x00FFF00	        # CARGA COLOR VERDE
 	lw	$t4, 0($t2)		# CARGA COLOR Y DIRECCION COLA
 	sw	$t3, 0($t2)		# SE REEMPLAZA COLOR DE COLA CON COLOR DE BACKGROUND
 	
@@ -340,7 +340,7 @@ locRandom:
 	add	$t0, $t4, $t0		# POSICIONA POSICION ALEATORIA EN BITMPA
 	lw	$t5, 0($t0)		# GUARDA POSICION ORIGINAL
 	
-	li	$t6,  0x00FFF00		# CARGA COLOR AMARILLO
+	li	$t6,  0x00FFF00		# CARGA COLOR VERDE
 	beq	$t5, $t6, goodApple	#SALTO POSICION PARA NUEVA MANZANA
 	j locRandom
 
